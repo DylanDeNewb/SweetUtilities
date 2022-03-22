@@ -19,7 +19,8 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         String string = manager.getRandomMessage(manager.getJoinMessages());
-        string = manager.replace(string, player);
+        string = manager.replacePlayer(string, player);
+        string = manager.replaceDisplayName(string, player);
 
         event.setJoinMessage(ChatUtils.translate("&a&l( ! ) &8► &r") + string);
     }

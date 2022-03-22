@@ -19,7 +19,8 @@ public class LeaveListener implements Listener {
     public void onJoin(PlayerQuitEvent event){
         Player player = event.getPlayer();
         String string = manager.getRandomMessage(manager.getLeaveMessages());
-        string = manager.replace(string, player);
+        string = manager.replacePlayer(string, player);
+        string = manager.replaceDisplayName(string, player);
 
         event.setQuitMessage(ChatUtils.translate("&c&l( ! ) &8► &r") + string);
     }

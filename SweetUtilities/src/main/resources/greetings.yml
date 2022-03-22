@@ -1,4 +1,7 @@
 # My plugins support HEX, You can do: &#hex
+# Variables:
+# - %player%
+# - %displayname%
 greetings:
   join:
     - "&fPlayer &6%player% &fhas joined the server, say hi!"

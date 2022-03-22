@@ -48,9 +48,11 @@ public class GreetingManager extends Manager {
         Bukkit.getPluginManager().registerEvents(new LeaveListener(this), getCore());
     }
 
-    public String replace(String string, Player player){
+    public String replacePlayer(String string, Player player){
         return string.replace("%player%", player.getName());
     }
+
+    public String replaceDisplayName(String string, Player player) { return string.replace("%displayname%", player.getDisplayName()); }
 
     public String getRandomMessage(List<String> strings){
         Random random = new Random();
