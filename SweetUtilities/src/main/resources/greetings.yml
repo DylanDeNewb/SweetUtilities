@@ -1,0 +1,8 @@
+# My plugins support HEX, You can do: &#hex
+greetings:
+  join:
+    - "&fPlayer &6%player% &fhas joined the server, say hi!"
+    - "&fLooks like &6%player% &ftook the good route!"
+  leave:
+    - "&fPlayer &6%player% &fhas left the server, goodbye!"
+    - "&fLooks like &6%player% &ftook a wrong turn..."
