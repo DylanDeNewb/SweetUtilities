@@ -15,7 +15,7 @@ import org.bukkit.plugin.java.annotation.plugin.Description;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
 
-@Plugin(name = "SweetUtilities", version = "0.1.1")
+@Plugin(name = "SweetUtilities", version = "0.2.0")
 @Description("Utility commands for SweetSMP")
 @SoftDependency("LuckPerms")
 @Author("DylanDeNewb")
