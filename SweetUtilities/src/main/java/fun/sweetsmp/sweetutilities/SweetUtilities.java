@@ -3,6 +3,7 @@ package fun.sweetsmp.sweetutilities;
 import cc.newbs.commandapi.CommandAPI;
 import cc.newbs.commandapi.CommandService;
 import fun.sweetsmp.sweetutilities.greetings.GreetingManager;
+import fun.sweetsmp.sweetutilities.inspects.InspectManager;
 import fun.sweetsmp.sweetutilities.ranks.RankManager;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
 import me.kodysimpson.simpapi.menu.MenuManager;
@@ -14,7 +15,7 @@ import org.bukkit.plugin.java.annotation.plugin.Description;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
 
-@Plugin(name = "SweetUtilities", version = "0.2.0")
+@Plugin(name = "SweetUtilities", version = "0.3.0")
 @Description("Utility commands for SweetSMP")
 @SoftDependency("LuckPerms")
 @Author("DylanDeNewb")
@@ -26,6 +27,7 @@ public final class SweetUtilities extends JavaPlugin {
 
     public GreetingManager greetingManager;
     public RankManager rankManager;
+    public InspectManager inspectManager;
 
     @Override
     public void onEnable() {
@@ -39,6 +41,9 @@ public final class SweetUtilities extends JavaPlugin {
 
         this.rankManager = new RankManager(this);
         this.rankManager.load();
+
+        this.inspectManager = new InspectManager(this);
+        this.inspectManager.load();
 
         this.commandService.registerCommands();
 
@@ -64,6 +69,10 @@ public final class SweetUtilities extends JavaPlugin {
 
     public RankManager getRankManager() {
         return rankManager;
+    }
+
+    public InspectManager getInspectManager() {
+        return inspectManager;
     }
 
     public void log(String message){
