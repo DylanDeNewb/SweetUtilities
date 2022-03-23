@@ -1,4 +1,4 @@
-package fun.sweetsmp.sweetutilities.staff.misc;
+package fun.sweetsmp.sweetutilities.ranks.misc;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
@@ -12,8 +12,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
-
-import java.io.*;
 
 public abstract class TypeAdapter<T> {
 

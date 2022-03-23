@@ -1,4 +1,4 @@
-package fun.sweetsmp.sweetutilities.staff.misc;
+package fun.sweetsmp.sweetutilities.ranks.misc;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;

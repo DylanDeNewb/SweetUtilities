@@ -1,8 +1,8 @@
-package fun.sweetsmp.sweetutilities.staff;
+package fun.sweetsmp.sweetutilities.ranks;
 
 import fun.sweetsmp.sweetutilities.SweetUtilities;
 import fun.sweetsmp.sweetutilities.api.Manager;
-import fun.sweetsmp.sweetutilities.staff.commands.RankMenuCommand;
+import fun.sweetsmp.sweetutilities.ranks.commands.RankMenuCommand;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.track.Track;

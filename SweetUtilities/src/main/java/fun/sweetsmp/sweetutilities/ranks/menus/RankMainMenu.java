@@ -1,4 +1,4 @@
-package fun.sweetsmp.sweetutilities.staff.menus;
+package fun.sweetsmp.sweetutilities.ranks.menus;
 
 import fun.sweetsmp.sweetutilities.SweetUtilities;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;

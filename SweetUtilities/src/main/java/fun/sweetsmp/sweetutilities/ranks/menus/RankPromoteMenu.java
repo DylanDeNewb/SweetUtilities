@@ -1,11 +1,10 @@
-package fun.sweetsmp.sweetutilities.staff.menus;
+package fun.sweetsmp.sweetutilities.ranks.menus;
 
 import fun.sweetsmp.sweetutilities.SweetUtilities;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
 import io.github.bananapuncher714.nbteditor.NBTEditor;
 import me.kodysimpson.simpapi.exceptions.MenuManagerException;
 import me.kodysimpson.simpapi.exceptions.MenuManagerNotSetupException;
-import me.kodysimpson.simpapi.heads.SkullCreator;
 import me.kodysimpson.simpapi.menu.Menu;
 import me.kodysimpson.simpapi.menu.MenuManager;
 import me.kodysimpson.simpapi.menu.PlayerMenuUtility;

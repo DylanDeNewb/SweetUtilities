@@ -1,4 +1,4 @@
-package fun.sweetsmp.sweetutilities.staff.commands;
+package fun.sweetsmp.sweetutilities.ranks.commands;
 
 import cc.newbs.commandapi.annotation.Command;
 import cc.newbs.commandapi.annotation.Require;
@@ -6,8 +6,8 @@ import cc.newbs.commandapi.annotation.Sender;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import fun.sweetsmp.sweetutilities.SweetUtilities;
-import fun.sweetsmp.sweetutilities.staff.menus.RankMainMenu;
-import fun.sweetsmp.sweetutilities.staff.misc.UUIDTypeAdapter;
+import fun.sweetsmp.sweetutilities.ranks.menus.RankMainMenu;
+import fun.sweetsmp.sweetutilities.ranks.misc.UUIDTypeAdapter;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
 import me.kodysimpson.simpapi.exceptions.MenuManagerException;
 import me.kodysimpson.simpapi.exceptions.MenuManagerNotSetupException;
