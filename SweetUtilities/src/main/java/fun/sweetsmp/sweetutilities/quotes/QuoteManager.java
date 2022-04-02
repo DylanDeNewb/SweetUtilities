@@ -27,7 +27,7 @@ public class QuoteManager extends Manager {
     }
 
     public void load(){
-        YamlConfiguration config = createFile("greetings").getAsYaml();
+        YamlConfiguration config = createFile("quotes").getAsYaml();
         enabled = config.getBoolean("quotes.enabled");
         if(!enabled){
             return;
