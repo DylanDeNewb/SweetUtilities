@@ -15,7 +15,7 @@ public class QuoteManager extends Manager {
 
     private boolean enabled = false;
     private String format;
-    private List<Quote> quotes;
+    private List<Quote> quotes = new ArrayList<>();
 
     public QuoteManager(SweetUtilities core) {
         super(core);
