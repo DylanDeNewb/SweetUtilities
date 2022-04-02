@@ -1,0 +1,8 @@
+quotes:
+  enabled: false
+  format: " · &8(&4&lQUOTE&8) &7'&f%quote%&7'"
+  options:
+    owner:
+      - "Insert owner quote"
+    admin:
+      - "Insert admin quote"

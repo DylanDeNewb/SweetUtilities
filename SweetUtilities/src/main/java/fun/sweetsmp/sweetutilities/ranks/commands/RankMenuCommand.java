@@ -45,68 +45,73 @@ public class RankMenuCommand {
                 player.sendMessage(ChatUtils.translate("&c&l( ! ) &8► &7You must provide a &c&nvalid&7 target"));
                 return;
             }
-            User targetUser = core.getRankManager().getLuckPerms().getUserManager().getUser(uuid);
 
-            try {
-                PlayerMenuUtility pmu = MenuManager.getPlayerMenuUtility(player);
-                pmu.setData("target", targetUser.getUsername());
-                pmu.setData("targetUser", targetUser);
+            core.getRankManager().getLuckPerms().getUserManager().loadUser(uuid)
+                    .thenAccept(user -> {
+                        User targetUser = user;
 
-                List<String> groupStrings = core.getRankManager().getTrack().getGroups();
-                List<Group> groupsPromote = new ArrayList<>();
-                List<Group> groupsDemote = new ArrayList<>();
-                for(String string : groupStrings){
-                    core.getRankManager().getLuckPerms().getGroupManager().loadGroup(string)
-                            .thenAccept(groupOpt -> {
-                                if(!groupOpt.isPresent()){
-                                    return;
+                        try {
+                            PlayerMenuUtility pmu = MenuManager.getPlayerMenuUtility(player);
+                            pmu.setData("target", targetUser.getUsername());
+                            pmu.setData("targetUser", targetUser);
+
+                            List<String> groupStrings = core.getRankManager().getTrack().getGroups();
+                            List<Group> groupsPromote = new ArrayList<>();
+                            List<Group> groupsDemote = new ArrayList<>();
+                            for(String string : groupStrings){
+                                core.getRankManager().getLuckPerms().getGroupManager().loadGroup(string)
+                                        .thenAccept(groupOpt -> {
+                                            if(!groupOpt.isPresent()){
+                                                return;
+                                            }
+
+                                            Group group = groupOpt.get();
+                                            if(!group.getWeight().isPresent()){
+                                                return;
+                                            }
+
+                                            String mainString = targetUser.getPrimaryGroup();
+
+                                            Group main = core.getRankManager().getLuckPerms().getGroupManager().getGroup(mainString);
+                                            if(!main.getWeight().isPresent()){
+                                                return;
+                                            }
+
+                                            if(main.getWeight().getAsInt() < group.getWeight().getAsInt() && !player.hasPermission("sweetutilities.rank.admin")){
+                                                return;
+                                            }
+
+                                            if(group.getWeight().getAsInt() > main.getWeight().getAsInt()){
+                                                groupsPromote.add(group);
+                                            }else if(group.getWeight().getAsInt() < main.getWeight().getAsInt()){
+                                                groupsDemote.add(group);
+                                            }
+                                        })
+                                        .exceptionally(throwable -> null);
+                            }
+
+                            Bukkit.getScheduler().runTaskLater(core, () -> {
+                                Collections.sort(groupsPromote, Comparator.comparingInt(o -> o.getWeight().getAsInt()));
+                                Collections.sort(groupsDemote, Comparator.comparingInt(o -> o.getWeight().getAsInt()));
+
+                                pmu.setData("groupsPromote", groupsPromote);
+                                pmu.setData("groupsDemote", groupsDemote);
+
+                                try {
+                                    MenuManager.openMenu(RankMainMenu.class, player);
+                                } catch (MenuManagerException e) {
+                                    e.printStackTrace();
+                                } catch (MenuManagerNotSetupException e) {
+                                    e.printStackTrace();
                                 }
+                            }, 20);
+                        } catch (MenuManagerException e) {
+                            e.printStackTrace();
+                        } catch (MenuManagerNotSetupException e) {
+                            e.printStackTrace();
+                        }
 
-                                Group group = groupOpt.get();
-                                if(!group.getWeight().isPresent()){
-                                    return;
-                                }
-
-                                String mainString = targetUser.getPrimaryGroup();
-
-                                Group main = core.getRankManager().getLuckPerms().getGroupManager().getGroup(mainString);
-                                if(!main.getWeight().isPresent()){
-                                    return;
-                                }
-
-                                if(main.getWeight().getAsInt() < group.getWeight().getAsInt() && !player.hasPermission("sweetutilities.rank.admin")){
-                                    return;
-                                }
-
-                                if(group.getWeight().getAsInt() > main.getWeight().getAsInt()){
-                                    groupsPromote.add(group);
-                                }else if(group.getWeight().getAsInt() < main.getWeight().getAsInt()){
-                                    groupsDemote.add(group);
-                                }
-                            })
-                            .exceptionally(throwable -> null);
-                }
-
-                Bukkit.getScheduler().runTaskLater(core, () -> {
-                    Collections.sort(groupsPromote, Comparator.comparingInt(o -> o.getWeight().getAsInt()));
-                    Collections.sort(groupsDemote, Comparator.comparingInt(o -> o.getWeight().getAsInt()));
-
-                    pmu.setData("groupsPromote", groupsPromote);
-                    pmu.setData("groupsDemote", groupsDemote);
-
-                    try {
-                        MenuManager.openMenu(RankMainMenu.class, player);
-                    } catch (MenuManagerException e) {
-                        e.printStackTrace();
-                    } catch (MenuManagerNotSetupException e) {
-                        e.printStackTrace();
-                    }
-                }, 20);
-            } catch (MenuManagerException e) {
-                e.printStackTrace();
-            } catch (MenuManagerNotSetupException e) {
-                e.printStackTrace();
-            }
+                    });
         });
 
     }

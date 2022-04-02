@@ -35,7 +35,7 @@ public class RankDemoteMenu extends Menu {
 
     public RankDemoteMenu(PlayerMenuUtility playerMenuUtility) {
         super(playerMenuUtility);
-        IntStream.range(10, 16).forEachOrdered(slots::add);
+        IntStream.range(10, 17).forEachOrdered(slots::add);
     }
 
     @Override

@@ -4,6 +4,7 @@ import fun.sweetsmp.sweetutilities.SweetUtilities;
 import fun.sweetsmp.sweetutilities.api.Manager;
 import fun.sweetsmp.sweetutilities.greetings.listeners.JoinListener;
 import fun.sweetsmp.sweetutilities.greetings.listeners.LeaveListener;
+import fun.sweetsmp.sweetutilities.greetings.listeners.VanishListener;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -17,11 +18,18 @@ public class GreetingManager extends Manager {
 
     List<String> joinMessages;
     List<String> leaveMessages;
+    boolean vanishEnabled = false;
+
     public GreetingManager(SweetUtilities core) {
         super(core);
     }
 
     public void load(){
+
+        if(Bukkit.getPluginManager().isPluginEnabled("LuckPerms")){
+            vanishEnabled = true;
+        }
+
         YamlConfiguration config = createFile("greetings").getAsYaml();
         this.joinMessages = new ArrayList<>();
         this.leaveMessages = new ArrayList<>();
@@ -46,6 +54,7 @@ public class GreetingManager extends Manager {
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), getCore());
         Bukkit.getPluginManager().registerEvents(new LeaveListener(this), getCore());
+        Bukkit.getPluginManager().registerEvents(new VanishListener(this), getCore());
     }
 
     public String replacePlayer(String string, Player player){
@@ -65,5 +74,9 @@ public class GreetingManager extends Manager {
 
     public List<String> getLeaveMessages() {
         return leaveMessages;
+    }
+
+    public boolean isVanishEnabled() {
+        return vanishEnabled;
     }
 }

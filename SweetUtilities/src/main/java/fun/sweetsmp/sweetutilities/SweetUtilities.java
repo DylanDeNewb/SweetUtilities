@@ -4,6 +4,7 @@ import cc.newbs.commandapi.CommandAPI;
 import cc.newbs.commandapi.CommandService;
 import fun.sweetsmp.sweetutilities.greetings.GreetingManager;
 import fun.sweetsmp.sweetutilities.inspects.InspectManager;
+import fun.sweetsmp.sweetutilities.quotes.QuoteManager;
 import fun.sweetsmp.sweetutilities.ranks.RankManager;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
 import me.kodysimpson.simpapi.menu.MenuManager;
@@ -18,6 +19,7 @@ import org.bukkit.plugin.java.annotation.plugin.author.Author;
 @Plugin(name = "SweetUtilities", version = "0.3.0")
 @Description("Utility commands for SweetSMP")
 @SoftDependency("LuckPerms")
+@SoftDependency("PremiumVanish")
 @Author("DylanDeNewb")
 @ApiVersion(ApiVersion.Target.v1_18)
 public final class SweetUtilities extends JavaPlugin {
@@ -25,9 +27,10 @@ public final class SweetUtilities extends JavaPlugin {
     private static SweetUtilities instance;
     private CommandService commandService;
 
-    public GreetingManager greetingManager;
-    public RankManager rankManager;
-    public InspectManager inspectManager;
+    private GreetingManager greetingManager;
+    private RankManager rankManager;
+    private InspectManager inspectManager;
+    private QuoteManager quoteManager;
 
     @Override
     public void onEnable() {
@@ -44,6 +47,9 @@ public final class SweetUtilities extends JavaPlugin {
 
         this.inspectManager = new InspectManager(this);
         this.inspectManager.load();
+
+        this.quoteManager = new QuoteManager(this);
+        this.quoteManager.load();
 
         this.commandService.registerCommands();
 
@@ -73,6 +79,10 @@ public final class SweetUtilities extends JavaPlugin {
 
     public InspectManager getInspectManager() {
         return inspectManager;
+    }
+
+    public QuoteManager getQuoteManager() {
+        return quoteManager;
     }
 
     public void log(String message){

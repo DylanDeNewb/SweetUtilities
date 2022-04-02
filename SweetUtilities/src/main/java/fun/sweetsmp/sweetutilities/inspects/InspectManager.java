@@ -7,6 +7,7 @@ import fun.sweetsmp.sweetutilities.ranks.commands.RankMenuCommand;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
 import fun.sweetsmp.sweetutilities.utils.FileUtils;
 import io.github.bananapuncher714.nbteditor.NBTEditor;
+import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -17,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class InspectManager extends Manager {
 
-    YamlConfiguration config;
+    private YamlConfiguration config;
 
     public InspectManager(SweetUtilities core) {
         super(core);
