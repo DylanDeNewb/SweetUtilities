@@ -40,7 +40,7 @@ public class QuoteManager extends Manager {
 
         for(String group : config.getConfigurationSection("quotes.options").getKeys(false)){
             getCore().log(group + ":");
-            for(String quote : config.getConfigurationSection("quotes.options." + group).getKeys(false)){
+            for(String quote : config.getStringList("quotes.options." + group)){
                 Quote q = new Quote(group, ChatUtils.translate(quote));
                 quotes.add(q);
                 getCore().log(" · " + q.getQuote());
