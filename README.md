@@ -1,8 +1,7 @@
 # SweetUtilities
 
 > /rank <Player> - Opens the Promotion/Demotion Menu - **sweetutilities.rank** || **sweetutilities.rank.admin**
-  
-> /inspect <Players/Miners> - Opens the Inspection Menus - **sweetutilities.inspect**
+> /quote <Section> - Sends a Quote - **sweetutilities.quote**
 
 __greetings.yml__
 ```yml
@@ -18,10 +17,17 @@ greetings:
     - "&fPlayer &6%player% &fhas left the server, goodbye!"
     - "&fLooks like &6%player% &ftook a wrong turn..."
 ```
-__inspect.yml__
+__quotes.yml__
 ```yml
-miners:
-  y: 11
+quotes:
+  enabled: false
+  format: " · &8(&4&lQUOTE&8) &7'&f%quote%&7'"
+  # Supports infinite options, and infinite quotes underneath.
+  options:
+    owner:
+      - "Insert owner quote"
+    admin:
+      - "Insert admin quote"
 ```
 __ranks.yml__
 ```yml
