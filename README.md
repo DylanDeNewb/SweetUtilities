@@ -1,6 +1,8 @@
 # SweetUtilities
 
-> /rank <Player> - Opens the Promotion/Demotion Menu - **sweetutilities.rank** || **sweetutilities.rank.admin**
+> /rank player - Opens the Promotion/Demotion Menu - **sweetutilities.rank** || **sweetutilities.rank.admin**
+
+> /quote section - Sends a Quote - **sweetutilities.quote**
 
 __greetings.yml__
 ```yml
