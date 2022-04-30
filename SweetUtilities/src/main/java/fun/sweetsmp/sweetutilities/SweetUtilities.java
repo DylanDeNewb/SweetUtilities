@@ -3,7 +3,6 @@ package fun.sweetsmp.sweetutilities;
 import cc.newbs.commandapi.CommandAPI;
 import cc.newbs.commandapi.CommandService;
 import fun.sweetsmp.sweetutilities.greetings.GreetingManager;
-import fun.sweetsmp.sweetutilities.inspects.InspectManager;
 import fun.sweetsmp.sweetutilities.quotes.QuoteManager;
 import fun.sweetsmp.sweetutilities.ranks.RankManager;
 import fun.sweetsmp.sweetutilities.utils.ChatUtils;
@@ -29,7 +28,6 @@ public final class SweetUtilities extends JavaPlugin {
 
     private GreetingManager greetingManager;
     private RankManager rankManager;
-    private InspectManager inspectManager;
     private QuoteManager quoteManager;
 
     @Override
@@ -44,9 +42,6 @@ public final class SweetUtilities extends JavaPlugin {
 
         this.rankManager = new RankManager(this);
         this.rankManager.load();
-
-        this.inspectManager = new InspectManager(this);
-        this.inspectManager.load();
 
         this.quoteManager = new QuoteManager(this);
         this.quoteManager.load();
@@ -75,10 +70,6 @@ public final class SweetUtilities extends JavaPlugin {
 
     public RankManager getRankManager() {
         return rankManager;
-    }
-
-    public InspectManager getInspectManager() {
-        return inspectManager;
     }
 
     public QuoteManager getQuoteManager() {
